@@ -83,7 +83,7 @@ public class ProductControllerTest {
         		productService.findById(Mockito.any(Integer.class))).thenReturn(product);
         String json = mapper.writeValueAsString(product);
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/mytoys/product/12341")
+				.get("/product/12341")
 				.contentType(MediaType.APPLICATION_JSON);
         MvcResult result = null;
 		try {
@@ -109,7 +109,7 @@ public class ProductControllerTest {
         		productService.findAll()).thenReturn(products);
         String json = mapper.writeValueAsString(products);
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/mytoys/products")
+				.get("/product")
 				.contentType(MediaType.APPLICATION_JSON);
         MvcResult result = null;
 		try {
