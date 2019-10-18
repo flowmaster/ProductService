@@ -16,7 +16,6 @@ import com.mt.product.service.ProductService;
 
 
 @RestController
-@RequestMapping("/mytoys")
 public class ProductController {
 	
 	@Autowired
@@ -29,7 +28,7 @@ public class ProductController {
 	}
 	
 	@ApiOperation(value = "Retrieve the all products from data source")
-	@GetMapping("/products")
+	@GetMapping("/product")
 	public ResponseEntity<List<Product>> allProduct() {
 		return ResponseEntity.ok().body(productService.findAll());
 	}
