@@ -37,12 +37,12 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public List<Product> findAll() {
+		LOGGER.info("Going to pull all Product data");
 		products = repository.allProducts();
-		LOGGER.debug("Product list size = "+products.size());
 		return Optional.ofNullable(products)
-		.filter(n -> !n.isEmpty())
-		.map(l -> l)
-		.orElseThrow(() -> new ResourceNotAvailableException("Data not found"));
+			.filter(n -> !n.isEmpty())
+			.map(l -> l)
+			.orElseThrow(() -> new ResourceNotAvailableException("Data not found"));
 	}
 	/*
 	 * (non-Javadoc)
