@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mt.product.exception.ProductNotFoundException;
+import com.mt.product.exception.ResourceNotAvailableException;
 import com.mt.product.model.Product;
 import com.mt.product.service.ProductService;
 
@@ -37,7 +38,7 @@ public class ProductController {
 		try{
 			return ResponseEntity.ok().body(productService.findAll());
 		}catch(Exception ex){
-			throw new ProductNotFoundException("Resource not found here");
+			throw new ResourceNotAvailableException("Resource not found here");
 		}
 	}
 
