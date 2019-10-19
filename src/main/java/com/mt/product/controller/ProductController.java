@@ -24,13 +24,21 @@ public class ProductController {
 	@ApiOperation(value = "Retrieve the given product detail for the productId")
 	@GetMapping("/product/{productId}")
 	public ResponseEntity<Product> productLookup(@PathVariable Integer productId) {
-		return ResponseEntity.ok().body(productService.findById(productId));
+		try{
+			return ResponseEntity.ok().body(productService.findById(productId));
+		}catch(Exception ex){
+			throw new ProductNotFoundException("This product "+ productId +" id not found");
+		}
 	}
 	
 	@ApiOperation(value = "Retrieve the all products from data source")
 	@GetMapping("/product")
 	public ResponseEntity<List<Product>> allProduct() {
-		return ResponseEntity.ok().body(productService.findAll());
+		try{
+			return ResponseEntity.ok().body(productService.findAll());
+		}catch(Exception ex){
+			throw new ProductNotFoundException("Resource not found here");
+		}
 	}
 
 }
